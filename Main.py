@@ -3,6 +3,7 @@ from tkinter import font, Toplevel
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import fitz
+import os
 
 from Hilos import hilos_hilos, hilos_con_argumentos, hilos_con_funcion_tarea, hilos_sincronizados, mario_bros_ruleta
 from Sockets import mensajes_cliente_servidor, tcp_cliente_servidor, udp_cliente_servidor, comunicacion_directa, comunicacion_indirecta, autenticacion_aguila
@@ -11,8 +12,11 @@ from Patrones import futuro_promesa, productor_consumidor, actores, reactor_y_pr
 
 PDF_PATH = r"Documentacion/pdfproyectofinal.pdf"
 
+ventanas_abiertas = []
+
 def mostrar_documentacion():
     ventana_pdf = Toplevel(root)
+    ventanas_abiertas.append(ventana_pdf)
     ventana_pdf.title("Documentación")
     ventana_pdf.geometry("650x600")
 
@@ -92,6 +96,13 @@ def mostrar_submenu(titulo, opciones):
         button_width = button.winfo_reqwidth()
         button.pack_configure(padx=(frame_width - button_width) // 2)
 
+def cerrar_aplicacion():
+    for ventana in ventanas_abiertas:
+        if ventana.winfo_exists():
+            ventana.destroy()
+    root.destroy()
+    os._exit(0)
+
 root = tk.Tk()
 root.title("Programación Concurrente UPP SFTW_07_03")
 root.geometry("800x600")
@@ -122,7 +133,7 @@ tk.Button(menu_bar, text="Semáforos", command=lambda: mostrar_submenu("Semáfor
 tk.Button(menu_bar, text="Patrones", command=lambda: mostrar_submenu("Patrones", patrones_opciones), **boton_estilo).pack(side="left", expand=True, fill="x")
 tk.Button(menu_bar, text="Documentación", command=mostrar_documentacion, **boton_estilo).pack(side="left", expand=True, fill="x")
 tk.Button(menu_bar, text="Acerca de", command=lambda: messagebox.showinfo("Acerca de", "Programación Concurrente UPP SFTW_07_03\nINTEGRANTES DEL EQUIPO:\n1.- Fabricio Meneses Avila\n2.- Jorge Ruiz Diaz\n3.- Diego Daniel Magdaleno Medina\n4.- Angel Gabriel Castillo Sanchez\n5.- Josefa Francisco Hernandez"), **boton_estilo).pack(side="left", expand=True, fill="x")
-tk.Button(menu_bar, text="Salir", command=root.quit, **boton_estilo).pack(side="left", expand=True, fill="x")
+tk.Button(menu_bar, text="Salir", command=cerrar_aplicacion, **boton_estilo).pack(side="left", expand=True, fill="x")
 
 menu_bar.lift()
 
