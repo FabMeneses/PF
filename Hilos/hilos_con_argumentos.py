@@ -13,25 +13,25 @@ def ejecutar():
     ventana = tk.Tk()
     ventana.title("Programa de Hilos con Tkinter")
     ventana.geometry("400x200")
-    ventana.configure(bg="#f0f0f0")  # Fondo gris claro
+    ventana.configure(bg="#34495e")  # Fondo gris oscuro
 
     # Crear una etiqueta para mostrar el progreso
-    label = tk.Label(ventana, text="Esperando para ejecutar...", bg="#f0f0f0", fg="#333333")
+    label = tk.Label(ventana, text="Esperando para ejecutar...", bg="#34495e", fg="#ffffff")
     label.pack(pady=10)
 
     # Crear campos de entrada para nombre y apellido
-    nombre_label = tk.Label(ventana, text="Nombre:", bg="#f0f0f0", fg="#333333")
+    nombre_label = tk.Label(ventana, text="Nombre:", bg="#34495e", fg="#ffffff")
     nombre_label.pack()
     nombre_entry = tk.Entry(ventana)
     nombre_entry.pack()
 
-    apellido_label = tk.Label(ventana, text="Apellido:", bg="#f0f0f0", fg="#333333")
+    apellido_label = tk.Label(ventana, text="Apellido:", bg="#34495e", fg="#ffffff")
     apellido_label.pack()
     apellido_entry = tk.Entry(ventana)
     apellido_entry.pack()
 
     # Crear un botón que inicia el hilo cuando se hace clic
-    boton = tk.Button(ventana, text="Iniciar Hilo", command=lambda: threading.Thread(target=Hilo_02, args=(nombre_entry.get(), apellido_entry.get(), label), daemon=True).start(), bg="#4CAF50", fg="white")
+    boton = tk.Button(ventana, text="Iniciar Hilo", command=lambda: threading.Thread(target=Hilo_02, args=(nombre_entry.get(), apellido_entry.get(), label), daemon=True).start(), bg="#3498db", fg="white")
     boton.pack(pady=20)
 
     # Iniciar el loop de la interfaz gráfica

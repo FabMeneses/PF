@@ -8,12 +8,13 @@ def ejecutar():
         def __init__(self, root):
             self.root = root
             self.root.title("Servidor de Chat")
+            self.root.configure(bg="#34495e")  # Fondo oscuro para la ventana principal
 
             # Configuración de la interfaz gráfica
-            self.log_area = scrolledtext.ScrolledText(self.root, state='disabled', wrap=tk.WORD, bg="#f0f0f0", fg="#333333")
+            self.log_area = scrolledtext.ScrolledText(self.root, state='disabled', wrap=tk.WORD, bg="#ffffff", fg="#333333")
             self.log_area.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
-            self.start_button = tk.Button(self.root, text="Iniciar Servidor", command=self.start_server, bg="#4CAF50", fg="white")
+            self.start_button = tk.Button(self.root, text="Iniciar Servidor", command=self.start_server, bg="#3498db", fg="white")
             self.start_button.pack(pady=10)
 
             self.HOST = '127.0.0.1'
@@ -104,6 +105,7 @@ def ejecutar():
         def __init__(self, root):
             self.root = root
             self.root.title("Cliente de Chat")
+            self.root.configure(bg="#34495e")  # Fondo oscuro para la ventana principal
 
             # Configuración del socket
             self.HOST = '127.0.0.1'
@@ -111,19 +113,19 @@ def ejecutar():
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
             # Configuración de la interfaz gráfica
-            self.nickname_label = tk.Label(self.root, text="Introduce tu apodo:", bg="#f0f0f0", fg="#333333")
+            self.nickname_label = tk.Label(self.root, text="Introduce tu apodo:", bg="#34495e", fg="#ffffff")
             self.nickname_label.pack(padx=10, pady=5)
 
             self.nickname_entry = tk.Entry(self.root)
             self.nickname_entry.pack(padx=10, pady=5)
             self.nickname_entry.bind("<Return>", self.set_nickname)
 
-            self.connect_button = tk.Button(self.root, text="Conectar", command=self.set_nickname, bg="#4CAF50", fg="white")
+            self.connect_button = tk.Button(self.root, text="Conectar", command=self.set_nickname, bg="#3498db", fg="white")
             self.connect_button.pack(padx=10, pady=5)
 
-            self.chat_area = scrolledtext.ScrolledText(self.root, state='disabled', wrap=tk.WORD, bg="#f0f0f0", fg="#333333")
+            self.chat_area = scrolledtext.ScrolledText(self.root, state='disabled', wrap=tk.WORD, bg="#ffffff", fg="#333333")
             self.input_field = tk.Entry(self.root)
-            self.send_button = tk.Button(self.root, text="Enviar", command=self.write_message, bg="#4CAF50", fg="white")
+            self.send_button = tk.Button(self.root, text="Enviar", command=self.write_message, bg="#3498db", fg="white")
 
         def set_nickname(self, event=None):
             self.nickname = self.nickname_entry.get().strip()

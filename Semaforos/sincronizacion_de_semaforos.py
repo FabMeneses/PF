@@ -33,16 +33,17 @@ def iniciar_impresion(texto_area):
 def Iniciar():
     ventana = tk.Tk()
     ventana.title("Simulación de Impresora")
+    ventana.configure(bg="#34495e")  # Fondo gris oscuro
 
-    texto_area = tk.Text(ventana, height=15, width=60)
+    texto_area = tk.Text(ventana, height=15, width=60, bg="#34495e", fg="#ffffff", insertbackground="#ffffff")  # Fondo gris oscuro y texto blanco
     texto_area.pack(padx=10, pady=10)
 
     # Definir estilos de texto
-    texto_area.tag_config("info", foreground="blue")
-    texto_area.tag_config("sending", foreground="orange")
-    texto_area.tag_config("done", foreground="green")
+    texto_area.tag_config("info", foreground="white")
+    texto_area.tag_config("sending", foreground="White")
+    texto_area.tag_config("done", foreground="White")
 
-    boton_comenzar = tk.Button(ventana, text="Comenzar Simulación", command=lambda: threading.Thread(target=iniciar_impresion, args=(texto_area,), daemon=True).start())
+    boton_comenzar = tk.Button(ventana, text="Comenzar Simulación", command=lambda: threading.Thread(target=iniciar_impresion, args=(texto_area,), daemon=True).start(), bg="#3498db", fg="#ffffff", activebackground="#2980b9", activeforeground="#ffffff", relief="flat")
     boton_comenzar.pack(pady=10)
 
     ventana.mainloop()

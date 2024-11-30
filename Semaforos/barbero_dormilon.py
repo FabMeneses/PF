@@ -69,12 +69,12 @@ def barbero(barberia):
 def ejecutar():
     ventana_barberia = tk.Tk()
     ventana_barberia.title("Barbero Dormilón")
-    ventana_barberia.configure(bg="#f0f0f0")
+    ventana_barberia.configure(bg="#34495e")  # Fondo gris oscuro
 
-    text_widget = tk.Text(ventana_barberia, height=20, width=80, wrap=tk.WORD, bg="#ffffff", fg="#000000")
+    text_widget = tk.Text(ventana_barberia, height=20, width=80, wrap=tk.WORD, bg="#ffffff", fg="#ffffff")  # Texto blanco
     text_widget.pack(padx=10, pady=10)
 
-    tk.Button(ventana_barberia, text="Iniciar Barbería", command=lambda: iniciar_barberia(text_widget), width=20, height=2, bg="#4CAF50", fg="#ffffff").pack(pady=5)
+    tk.Button(ventana_barberia, text="Iniciar Barbería", command=lambda: iniciar_barberia(text_widget), width=20, height=2, bg="#3498db", fg="#ffffff").pack(pady=5)  # Botón azul brillante con texto blanco
 
     ventana_barberia.mainloop()
 

@@ -85,12 +85,12 @@ def iniciar_hilos(output):
 def ejecutar():
     root = tk.Tk()
     root.title("Comunicación Directa UDP y TCP")
-    root.configure(bg='#f0f0f0')
+    root.configure(bg='#34495e')  # Fondo gris oscuro
 
-    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20, bg='#e6e6e6', fg='#000000')
+    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20, bg='#ffffff', fg='#000000')  # Fondo blanco para la terminal
     output.pack(pady=20)
 
-    start_button = tk.Button(root, text="Iniciar Comunicación", command=lambda: iniciar_hilos(output), bg='#4CAF50', fg='#ffffff')
+    start_button = tk.Button(root, text="Iniciar Comunicación", command=lambda: iniciar_hilos(output), bg='#3498db', fg='#ffffff')  # Botón azul brillante con texto blanco
     start_button.pack(pady=10)
 
     root.mainloop()

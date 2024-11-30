@@ -38,19 +38,20 @@ def ejecutar():
     ventana_principal = tk.Tk()
     ventana_principal.title("Cliente Tigres")
     ventana_principal.geometry("600x500")
+    ventana_principal.configure(bg="#34495e")  # Fondo gris oscuro
 
     # Título y frase alusiva
     etiqueta_titulo = tk.Label(
         ventana_principal, 
         text="Cliente Tigres - ¡Siempre al ataque!", 
         font=("Arial", 16), 
-        bg="yellow", 
-        fg="blue"
+        bg="#34495e",  # Fondo gris oscuro
+        fg="#ffffff"  # Texto blanco
     )
     etiqueta_titulo.pack(pady=10)
 
     # Cuadro de texto para el log
-    cuadro_log = tk.Text(ventana_principal, height=20, width=70, state="disabled", font=("Arial", 10))
+    cuadro_log = tk.Text(ventana_principal, height=20, width=70, state="disabled", font=("Arial", 10), bg="white", fg="black")
     cuadro_log.pack(pady=10)
 
     # Botón para conectar al servidor
@@ -59,8 +60,8 @@ def ejecutar():
         text="Conectar al Servidor", 
         command=conectar_servidor, 
         font=("Arial", 12), 
-        bg="blue", 
-        fg="white"
+        bg="#3498db",  # Azul brillante
+        fg="#ffffff"  # Texto blanco
     )
     boton_conectar.pack(pady=10)
 

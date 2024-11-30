@@ -93,19 +93,28 @@ def ejecutar():
     ventana_principal = tk.Tk()
     ventana_principal.title("Interacción entre Actores")
     ventana_principal.geometry("600x500")
+    ventana_principal.configure(bg="#34495e")  # Fondo gris oscuro
 
     # Título
     etiqueta_titulo = tk.Label(
         ventana_principal, 
         text="Actores en Interacción - ¡Conectados Siempre!", 
         font=("Arial", 14), 
-        bg="yellow", 
-        fg="blue"
+        bg="#34495e",  # Fondo gris oscuro
+        fg="#ffffff"  # Texto blanco
     )
     etiqueta_titulo.pack(pady=10)
 
     # Cuadro de texto para mostrar el log
-    cuadro_log = tk.Text(ventana_principal, height=20, width=70, state="disabled", font=("Arial", 10))
+    cuadro_log = tk.Text(
+        ventana_principal, 
+        height=20, 
+        width=70, 
+        state="disabled", 
+        font=("Arial", 10), 
+        bg="#ffffff",  # Fondo blanco para la terminal
+        fg="#000000"  # Texto negro
+    )
     cuadro_log.pack(pady=10)
 
     # Botón para iniciar actores
@@ -114,8 +123,8 @@ def ejecutar():
         text="Iniciar Actores", 
         command=lambda: iniciar_actores(cuadro_log), 
         font=("Arial", 12), 
-        bg="green", 
-        fg="white"
+        bg="#3498db",  # Fondo azul brillante
+        fg="#ffffff"  # Texto blanco
     )
     boton_iniciar.pack(pady=5)
 
@@ -125,8 +134,8 @@ def ejecutar():
         text="Detener Actores", 
         command=detener_actores, 
         font=("Arial", 12), 
-        bg="red", 
-        fg="white"
+        bg="#3498db",  # Fondo azul brillante
+        fg="#ffffff"  # Texto blanco
     )
     boton_detener.pack(pady=5)
 

@@ -22,19 +22,20 @@ def ejecutar():
     ventana_principal = tk.Tk()
     ventana_principal.title("Servidor Tigres")
     ventana_principal.geometry("600x500")
+    ventana_principal.configure(bg="#34495e")  # Fondo gris oscuro
 
     # Título y frase alusiva
     etiqueta_titulo = tk.Label(
         ventana_principal, 
         text="Servidor Tigres - ¡Unidos hasta el final!", 
         font=("Arial", 16), 
-        bg="yellow", 
-        fg="blue"
+        bg="#34495e",  # Fondo gris oscuro
+        fg="#ffffff"  # Texto blanco
     )
     etiqueta_titulo.pack(pady=10)
 
     # Agregar un cuadro de texto para mostrar el log
-    cuadro_log = tk.Text(ventana_principal, height=20, width=70, state="disabled", font=("Arial", 10))
+    cuadro_log = tk.Text(ventana_principal, height=20, width=70, state="disabled", font=("Arial", 10), bg="white", fg="black")
     cuadro_log.pack(pady=10)
 
     # Función para agregar mensajes al cuadro de log
@@ -65,6 +66,7 @@ def ejecutar():
 
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+                server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 server_socket.bind((HOST, PORT))
                 server_socket.listen()
                 agregar_log(f"Servidor escuchando en {HOST}:{PORT}")
@@ -87,6 +89,7 @@ def ejecutar():
             agregar_log(f"Error del servidor: {e}")
         finally:
             agregar_log("Servidor detenido.")
+            server_running = False
 
     # Botón para iniciar el servidor
     def iniciar_servidor():
@@ -114,8 +117,8 @@ def ejecutar():
         text="Iniciar Servidor", 
         command=iniciar_servidor, 
         font=("Arial", 12), 
-        bg="blue", 
-        fg="white"
+        bg="#3498db",  # Azul brillante
+        fg="#ffffff"  # Texto blanco
     )
     boton_iniciar.pack(pady=10)
 
@@ -124,8 +127,8 @@ def ejecutar():
         text="Detener Servidor", 
         command=detener_servidor, 
         font=("Arial", 12), 
-        bg="red", 
-        fg="white"
+        bg="#3498db",  # Azul brillante
+        fg="#ffffff"  # Texto blanco
     )
     boton_detener.pack(pady=5)
 

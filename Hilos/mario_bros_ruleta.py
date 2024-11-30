@@ -10,6 +10,7 @@ class MarioRuletaApp:
         self.root = root
         self.root.title("Mario Bros Ruleta")
         self.root.geometry("400x250")
+        self.root.configure(bg="#34495e")  # Fondo oscuro
 
         # Variables para el estado del juego
         self.result = [''] * 3
@@ -25,16 +26,16 @@ class MarioRuletaApp:
 
     def create_widgets(self):
         """Crea y organiza los widgets de la interfaz."""
-        self.label_title = tk.Label(self.root, text="Ruleta Mario Bros", font=("Arial", 20, "bold"), fg="#FF5733")
+        self.label_title = tk.Label(self.root, text="Ruleta Mario Bros", font=("Arial", 20, "bold"), fg="#ffffff", bg="#34495e")
         self.label_title.pack(pady=10)
 
-        self.label_result = tk.Label(self.root, text="Tiradas: --- --- ---", font=("Arial", 16), fg="#33C1FF")
+        self.label_result = tk.Label(self.root, text="Tiradas: --- --- ---", font=("Arial", 16), fg="#ffffff", bg="#34495e")
         self.label_result.pack(pady=10)
 
-        self.label_score = tk.Label(self.root, text="Puntos: 0", font=("Arial", 16), fg="#33FF57")
+        self.label_score = tk.Label(self.root, text="Puntos: 0", font=("Arial", 16), fg="#ffffff", bg="#34495e")
         self.label_score.pack(pady=10)
 
-        self.button_toggle = tk.Button(self.root, text="Tirar", command=self.toggle_spin, font=("Arial", 14), bg="#4CAF50", fg="white", width=15)
+        self.button_toggle = tk.Button(self.root, text="Tirar", command=self.toggle_spin, font=("Arial", 14), bg="#3498db", fg="white", width=15, relief="flat")
         self.button_toggle.pack(pady=10)
 
     def pantalla_giro(self, index):
@@ -46,7 +47,7 @@ class MarioRuletaApp:
 
     def start_spin(self):
         """Inicia los giros de los tambores."""
-        self.button_toggle.config(text="Detener", bg="#f44336")
+        self.button_toggle.config(text="Detener", bg="#e74c3c")
         self.result = [''] * 3
         self.hilado_flags = [True] * 3
         self.threads = []
@@ -91,12 +92,12 @@ class MarioRuletaApp:
         score_gain = self.calcula_score(self.result)
         self.score += score_gain
         if score_gain > 0:
-            self.label_score.config(text=f"¡Ganaste {score_gain} puntos! Total: {self.score}")
+            self.label_score.config(text=f"¡Ganaste tienes {score_gain} puntos! Total: {self.score} Puntos")
         else:
-            self.label_score.config(text=f"No ganaste esta vez. Puntaje total: {self.score}")
+            self.label_score.config(text=f"Una lastima. Tienes: {self.score} Puntos")
 
     def calcula_score(self, result):
-        """Calcula el puntaje basado en el resultado."""
+
         if result[0] == result[1] == result[2]:
             if result[0] == "🌟":
                 return 5
@@ -107,7 +108,6 @@ class MarioRuletaApp:
         return 0
 
     def reset_game(self):
-        """Reinicia el juego, pero mantiene el puntaje."""
         self.result = [''] * 3
         self.hilado_flags = [True] * 3
         self.label_result.config(text="Giros: --- --- ---")

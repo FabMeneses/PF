@@ -71,20 +71,20 @@ def barbero(barberia):
 def ejecutar():
     ventana_barbero = tk.Tk()
     ventana_barbero.title("Barbero Dormilón - Barbero")
-    ventana_barbero.configure(bg="#f0f0f0")
+    ventana_barbero.configure(bg="#34495e")  # Fondo gris oscuro
 
     text_widget_barbero = tk.Text(ventana_barbero, height=20, width=80, wrap=tk.WORD, bg="#ffffff", fg="#000000")
     text_widget_barbero.pack(padx=10, pady=10)
 
     ventana_cliente = tk.Toplevel(ventana_barbero)
     ventana_cliente.title("Barbero Dormilón - Cliente")
-    ventana_cliente.configure(bg="#f0f0f0")
+    ventana_cliente.configure(bg="#34495e")  # Fondo gris oscuro
 
     text_widget_cliente = tk.Text(ventana_cliente, height=20, width=80, wrap=tk.WORD, bg="#ffffff", fg="#000000")
     text_widget_cliente.pack(padx=10, pady=10)
 
-    tk.Button(ventana_barbero, text="Iniciar Barbería", command=lambda: iniciar_barbero(text_widget_barbero, text_widget_cliente), width=20, height=2, bg="#4CAF50", fg="#ffffff").pack(pady=5)
-    tk.Button(ventana_cliente, text="Iniciar Cliente", command=lambda: iniciar_cliente(text_widget_cliente), width=20, height=2, bg="#4CAF50", fg="#ffffff").pack(pady=5)
+    tk.Button(ventana_barbero, text="Iniciar Barbería", command=lambda: iniciar_barbero(text_widget_barbero, text_widget_cliente), width=20, height=2, bg="#3498db", fg="#ffffff").pack(pady=5)  # Botón azul brillante con texto blanco
+    tk.Button(ventana_cliente, text="Iniciar Cliente", command=lambda: iniciar_cliente(text_widget_cliente), width=20, height=2, bg="#3498db", fg="#ffffff").pack(pady=5)  # Botón azul brillante con texto blanco
 
     ventana_barbero.mainloop()
 

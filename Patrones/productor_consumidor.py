@@ -41,7 +41,7 @@ def ejecutar():
         global running
         if not running:
             running = True
-            status_label.config(text="Estado: Activo 🟡🔵", fg="blue")
+            status_label.config(text="Estado: Activo 🟡🔵", fg="white")
             log_text.insert(tk.END, "🔥 Procesos iniciados...\n")
             productor()
             consumidor()
@@ -51,21 +51,21 @@ def ejecutar():
         global running
         if running:
             running = False
-            status_label.config(text="Estado: Inactivo 🛑", fg="red")
+            status_label.config(text="Estado: Inactivo 🛑", fg="White")
             log_text.insert(tk.END, "🚫 Procesos detenidos...\n")
 
     # Configurar la ventana de Tkinter
     root = tk.Tk()
     root.title("Tigres Productor-Consumidor")
     root.geometry("550x500")
-    root.config(bg="#FFDD00")  # Fondo amarillo Tigres
+    root.config(bg="#34495e")  # Fondo gris oscuro
 
     # Crear el marco principal
-    main_frame = tk.Frame(root, bg="#FFDD00")
+    main_frame = tk.Frame(root, bg="#34495e")
     main_frame.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
 
     # Log para mostrar la actividad
-    log_frame = tk.LabelFrame(main_frame, text="Log de Actividad", font=("Arial", 12, "bold"), bg="#FFDD00", fg="#0033A0", bd=3, relief="ridge")
+    log_frame = tk.LabelFrame(main_frame, text="Log de Actividad", font=("Arial", 12, "bold"), bg="#2c3e50", fg="#ffffff", bd=3, relief="ridge")
     log_frame.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
 
     log_text = tk.Text(log_frame, width=60, height=15, state=tk.NORMAL, bg="white", fg="black", font=("Consolas", 10), bd=2, relief="sunken")
@@ -73,17 +73,17 @@ def ejecutar():
     log_text.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
     # Barra de estado
-    status_label = tk.Label(root, text="Estado: Inactivo 🛑", fg="red", bg="#FFDD00", font=("Arial", 12, "bold"), bd=1, relief="sunken", anchor="w")
+    status_label = tk.Label(root, text="Estado: Inactivo 🛑", fg="red", bg="#34495e", font=("Arial", 12, "bold"), bd=1, relief="sunken", anchor="w")
     status_label.pack(pady=5, fill=tk.X, padx=10)
 
     # Botones para controlar los procesos
-    button_frame = tk.Frame(root, bg="#FFDD00")
+    button_frame = tk.Frame(root, bg="#34495e")
     button_frame.pack(pady=10)
 
-    start_button = tk.Button(button_frame, text="Iniciar ⚽", command=iniciar, bg="#0033A0", fg="white", font=("Arial", 12, "bold"), width=12, relief="raised")
+    start_button = tk.Button(button_frame, text="Iniciar ⚽", command=iniciar, bg="#3498db", fg="white", font=("Arial", 12, "bold"), width=12, relief="raised")
     start_button.grid(row=0, column=0, padx=10)
 
-    stop_button = tk.Button(button_frame, text="Detener 🛑", command=detener, bg="#D50000", fg="white", font=("Arial", 12, "bold"), width=12, relief="raised")
+    stop_button = tk.Button(button_frame, text="Detener 🛑", command=detener, bg="#e74c3c", fg="white", font=("Arial", 12, "bold"), width=12, relief="raised")
     stop_button.grid(row=0, column=1, padx=10)
 
     # Ejecutar la aplicación

@@ -70,23 +70,23 @@ def iniciar_hilos(output, entry_username, entry_password):
 def ejecutar():
     root = tk.Tk()
     root.title("Autenticación Águila")
-    root.configure(bg="#2E4053")
+    root.configure(bg="#34495e")  # Fondo gris oscuro
 
     # Área de texto para mostrar los mensajes
-    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20, bg="#F4F6F7", fg="#1C2833")
+    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20, bg="#ffffff", fg="#1C2833")  # Fondo blanco para la terminal
     output.pack(pady=20)
 
     # Campos de entrada para el nombre de usuario y la contraseña
-    tk.Label(root, text="Nombre de usuario:", bg="#2E4053", fg="#F4F6F7").pack()
+    tk.Label(root, text="Nombre de usuario:", bg="#34495e", fg="#ffffff").pack()  # Texto blanco
     entry_username = tk.Entry(root, bg="#D5DBDB", fg="#1C2833")
     entry_username.pack()
 
-    tk.Label(root, text="Contraseña:", bg="#2E4053", fg="#F4F6F7").pack()
+    tk.Label(root, text="Contraseña:", bg="#34495e", fg="#ffffff").pack()  # Texto blanco
     entry_password = tk.Entry(root, show="*", bg="#D5DBDB", fg="#1C2833")
     entry_password.pack()
 
     # Botón para iniciar la autenticación
-    start_button = tk.Button(root, text="Iniciar Autenticación", command=lambda: iniciar_hilos(output, entry_username, entry_password), bg="#1ABC9C", fg="#F4F6F7")
+    start_button = tk.Button(root, text="Iniciar Autenticación", command=lambda: iniciar_hilos(output, entry_username, entry_password), bg="#3498db", fg="#ffffff")  # Botón azul brillante con texto blanco
     start_button.pack(pady=10)
 
     root.mainloop()

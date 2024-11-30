@@ -18,6 +18,7 @@ def ejecutar():
     root.title("Condición de Carrera - Cuenta Bancaria")
     root.geometry("400x350")
     root.resizable(False, False)
+    root.configure(bg="#34495e")  # Fondo gris oscuro
 
     cuenta = CuentaBancaria(1000)
     texto_saldo = tk.StringVar(value=f"Saldo actual: ${cuenta.saldo}")
@@ -45,19 +46,38 @@ def ejecutar():
         threading.Thread(target=hacer_deposito, args=(cuenta, monto1, texto_saldo, hilo_terminado)).start()
         threading.Thread(target=hacer_deposito, args=(cuenta, monto2, texto_saldo, hilo_terminado)).start()
 
-    tk.Label(root, text="Condición de Carrera", font=("Helvetica", 16, "bold"), fg="#2c3e50").pack(pady=10)
-    tk.Label(root, text="La cuenta tiene un saldo inicial de $1000.", font=("Helvetica", 12), fg="#16a085").pack(pady=5)
-    tk.Label(root, textvariable=texto_saldo, font=("Helvetica", 14), fg="#2980b9").pack(pady=5)
+    tk.Label(root, text="Condición de Carrera", font=("Helvetica", 16, "bold"), fg="#ffffff", bg="#34495e").pack(pady=10)
+    tk.Label(root, text="La cuenta tiene un saldo inicial de $1000.", font=("Helvetica", 12), fg="#ffffff", bg="#34495e").pack(pady=5)
+    tk.Label(root, textvariable=texto_saldo, font=("Helvetica", 14), fg="#ffffff", bg="#34495e").pack(pady=5)
 
-    tk.Label(root, text="Monto del primer depósito:", font=("Helvetica", 12), fg="#8e44ad").pack(pady=5)
-    entrada_monto1 = tk.Entry(root, font=("Helvetica", 12))
+    tk.Label(root, text="Monto del primer depósito:", font=("Helvetica", 12), fg="#ffffff", bg="#34495e").pack(pady=5)
+    entrada_monto1 = tk.Entry(root, font=("Helvetica", 12), bg="#ffffff")
     entrada_monto1.pack(pady=5)
 
-    tk.Label(root, text="Monto del segundo depósito:", font=("Helvetica", 12), fg="#8e44ad").pack(pady=5)
-    entrada_monto2 = tk.Entry(root, font=("Helvetica", 12))
+    tk.Label(root, text="Monto del segundo depósito:", font=("Helvetica", 12), fg="#ffffff", bg="#34495e").pack(pady=5)
+    entrada_monto2 = tk.Entry(root, font=("Helvetica", 12), bg="#ffffff")
     entrada_monto2.pack(pady=5)
 
     tk.Button(root, text="Hacer Depósitos", font=("Helvetica", 12, "bold"), bg="#3498db", fg="white",
               command=iniciar_depositos).pack(pady=15)
 
     root.mainloop()
+
+# Personalizar los diálogos de mensaje
+def messagebox_showinfo(title, message):
+    top = tk.Toplevel()
+    top.title(title)
+    top.configure(bg="#2c3e50")
+    tk.Label(top, text=message, font=("Helvetica", 12), fg="#ffffff", bg="#2c3e50").pack(pady=10)
+    tk.Button(top, text="OK", font=("Helvetica", 12, "bold"), bg="#e74c3c", fg="white", command=top.destroy).pack(pady=5)
+
+messagebox.showinfo = messagebox_showinfo
+
+def messagebox_showerror(title, message):
+    top = tk.Toplevel()
+    top.title(title)
+    top.configure(bg="#2c3e50")
+    tk.Label(top, text=message, font=("Helvetica", 12), fg="#ffffff", bg="#2c3e50").pack(pady=10)
+    tk.Button(top, text="OK", font=("Helvetica", 12, "bold"), bg="#e74c3c", fg="white", command=top.destroy).pack(pady=5)
+
+messagebox.showerror = messagebox_showerror
