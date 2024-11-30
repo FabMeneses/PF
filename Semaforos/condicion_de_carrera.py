@@ -14,19 +14,15 @@ class CuentaBancaria:
             self.saldo = saldo_actual
 
 def ejecutar():
-    # Crear la ventana principal
     root = tk.Tk()
     root.title("Condición de Carrera - Cuenta Bancaria")
     root.geometry("400x350")
     root.resizable(False, False)
+    root.configure(bg="#34495e")  # Fondo gris oscuro
 
-    # Crear una instancia de CuentaBancaria
     cuenta = CuentaBancaria(1000)
-
-    # Variables de texto
     texto_saldo = tk.StringVar(value=f"Saldo actual: ${cuenta.saldo}")
 
-    # Función para manejar depósitos
     def hacer_deposito(cuenta, monto, texto_saldo, callback):
         cuenta.depositar(monto)
         texto_saldo.set(f"Saldo actual: ${cuenta.saldo}")
@@ -40,33 +36,48 @@ def ejecutar():
             messagebox.showerror("Error", "Por favor, ingresa montos válidos.")
             return
 
-        contador = [0]  # Usamos una lista para que sea mutable en los hilos
+        contador = [0]
 
         def hilo_terminado():
             contador[0] += 1
-            if contador[0] == 2:  # Ambos hilos han terminado
+            if contador[0] == 2:
                 messagebox.showinfo("Finalizado", f"Depósitos completados. Saldo final: ${cuenta.saldo}")
 
-        # Iniciar los hilos sin bloquear la interfaz
         threading.Thread(target=hacer_deposito, args=(cuenta, monto1, texto_saldo, hilo_terminado)).start()
         threading.Thread(target=hacer_deposito, args=(cuenta, monto2, texto_saldo, hilo_terminado)).start()
 
-    # Etiquetas y entradas
-    tk.Label(root, text="Condición de Carrera", font=("Helvetica", 16, "bold")).pack(pady=10)
-    tk.Label(root, text="La cuenta tiene un saldo inicial de $1000.", font=("Helvetica", 12), fg="black").pack(pady=5)
-    tk.Label(root, textvariable=texto_saldo, font=("Helvetica", 14), fg="blue").pack(pady=5)
+    tk.Label(root, text="Condición de Carrera", font=("Helvetica", 16, "bold"), fg="#ffffff", bg="#34495e").pack(pady=10)
+    tk.Label(root, text="La cuenta tiene un saldo inicial de $1000.", font=("Helvetica", 12), fg="#ffffff", bg="#34495e").pack(pady=5)
+    tk.Label(root, textvariable=texto_saldo, font=("Helvetica", 14), fg="#ffffff", bg="#34495e").pack(pady=5)
 
-    tk.Label(root, text="Monto del primer depósito:", font=("Helvetica", 12)).pack(pady=5)
-    entrada_monto1 = tk.Entry(root, font=("Helvetica", 12))
+    tk.Label(root, text="Monto del primer depósito:", font=("Helvetica", 12), fg="#ffffff", bg="#34495e").pack(pady=5)
+    entrada_monto1 = tk.Entry(root, font=("Helvetica", 12), bg="#ffffff")
     entrada_monto1.pack(pady=5)
 
-    tk.Label(root, text="Monto del segundo depósito:", font=("Helvetica", 12)).pack(pady=5)
-    entrada_monto2 = tk.Entry(root, font=("Helvetica", 12))
+    tk.Label(root, text="Monto del segundo depósito:", font=("Helvetica", 12), fg="#ffffff", bg="#34495e").pack(pady=5)
+    entrada_monto2 = tk.Entry(root, font=("Helvetica", 12), bg="#ffffff")
     entrada_monto2.pack(pady=5)
 
-    # Botón para iniciar los depósitos
     tk.Button(root, text="Hacer Depósitos", font=("Helvetica", 12, "bold"), bg="#3498db", fg="white",
               command=iniciar_depositos).pack(pady=15)
 
-    # Iniciar el loop de la ventana
     root.mainloop()
+
+# Personalizar los diálogos de mensaje
+def messagebox_showinfo(title, message):
+    top = tk.Toplevel()
+    top.title(title)
+    top.configure(bg="#2c3e50")
+    tk.Label(top, text=message, font=("Helvetica", 12), fg="#ffffff", bg="#2c3e50").pack(pady=10)
+    tk.Button(top, text="OK", font=("Helvetica", 12, "bold"), bg="#e74c3c", fg="white", command=top.destroy).pack(pady=5)
+
+messagebox.showinfo = messagebox_showinfo
+
+def messagebox_showerror(title, message):
+    top = tk.Toplevel()
+    top.title(title)
+    top.configure(bg="#2c3e50")
+    tk.Label(top, text=message, font=("Helvetica", 12), fg="#ffffff", bg="#2c3e50").pack(pady=10)
+    tk.Button(top, text="OK", font=("Helvetica", 12, "bold"), bg="#e74c3c", fg="white", command=top.destroy).pack(pady=5)
+
+messagebox.showerror = messagebox_showerror
