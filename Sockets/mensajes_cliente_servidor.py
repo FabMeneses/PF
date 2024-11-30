@@ -50,11 +50,13 @@ def ejecutar():
     root = tk.Tk()
     root.title("Cliente-Servidor")
 
-    output = scrolledtext.ScrolledText(root, width=50, height=20)
-    output.pack()
+    # Configuración de colores
+    root.configure(bg='lightblue')
+    output = scrolledtext.ScrolledText(root, width=50, height=20, bg='white', fg='black')
+    output.pack(pady=10)
 
-    btn_iniciar = tk.Button(root, text="Iniciar", command=iniciar_hilos)
-    btn_iniciar.pack()
+    btn_iniciar = tk.Button(root, text="Iniciar", command=iniciar_hilos, bg='green', fg='white')
+    btn_iniciar.pack(pady=10)
 
     root.mainloop()
 

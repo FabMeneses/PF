@@ -36,7 +36,9 @@ def ejecutar():
     root = tk.Tk()
     root.title("Comunicación Indirecta con Sockets")
 
-    output = scrolledtext.ScrolledText(root, wrap=tk.WORD)
+    # Configuración de colores
+    root.configure(bg='#2e3f4f')
+    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, bg='#1c2833', fg='#f7f9f9', insertbackground='white')
     output.pack(padx=10, pady=10)
 
     # Crear y arrancar los hilos

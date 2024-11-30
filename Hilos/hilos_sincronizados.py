@@ -26,7 +26,7 @@ def ejecutar():
     # Crear la ventana principal
     root = tk.Tk()
     root.title("Ejemplo de Hilos con Tkinter")
-    root.geometry("400x150")
+    root.geometry("400x200")
 
     # Variables para controlar el estado de los hilos
     global hilo1_terminado, hilo2_terminado, label1, label2, label_status
@@ -34,9 +34,9 @@ def ejecutar():
     hilo2_terminado = tk.BooleanVar(value=False)
 
     # Crear etiquetas para mostrar el estado de los hilos
-    label1 = ttk.Label(root, text="Esperando para iniciar Hilo 1")
+    label1 = ttk.Label(root, text="Esperando para iniciar Hilo 1", foreground="blue")
     label1.pack(pady=10)
-    label2 = ttk.Label(root, text="Esperando para iniciar Hilo 2")
+    label2 = ttk.Label(root, text="Esperando para iniciar Hilo 2", foreground="green")
     label2.pack(pady=10)
 
     # Crear un botón para iniciar los hilos
@@ -44,7 +44,7 @@ def ejecutar():
     boton_iniciar.pack(pady=20)
 
     # Crear una etiqueta para mostrar el estado general
-    label_status = ttk.Label(root, text="")
+    label_status = ttk.Label(root, text="", foreground="red")
     label_status.pack(pady=10)
 
     # Iniciar el bucle principal de la interfaz

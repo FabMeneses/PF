@@ -4,12 +4,10 @@ import time
 import tkinter as tk
 from tkinter import scrolledtext
 
-# Dirección y puertos
 direccion = '127.0.0.1'
 puerto_udp = 9999
 puerto_tcp = 10000
 
-# Función para el servidor UDP
 def servidor_udp(output):
     mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     mySocket.bind((direccion, puerto_udp))
@@ -24,7 +22,6 @@ def servidor_udp(output):
         mySocket.sendto(msg_out, client_addr)
         output.yview(tk.END)
 
-# Función para el cliente UDP
 def cliente_udp(output):
     mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     for i in range(5):
@@ -38,7 +35,6 @@ def cliente_udp(output):
     mySocket.sendto(b'fin', (direccion, puerto_udp))
     output.insert(tk.END, "Cliente UDP: Conexión cerrada.\n")
 
-# Función para el servidor TCP
 def servidor_tcp(output):
     mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     mySocket.bind((direccion, puerto_tcp))
@@ -60,7 +56,6 @@ def servidor_tcp(output):
             output.yview(tk.END)
     output.insert(tk.END, "Servidor TCP: Conexión cerrada.\n")
 
-# Función para el cliente TCP
 def cliente_tcp(output):
     mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     time.sleep(3)  # Esperar al servidor
@@ -90,13 +85,12 @@ def iniciar_hilos(output):
 def ejecutar():
     root = tk.Tk()
     root.title("Comunicación Directa UDP y TCP")
+    root.configure(bg='#f0f0f0')
 
-    # Área de texto para mostrar los mensajes
-    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20)
+    output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20, bg='#e6e6e6', fg='#000000')
     output.pack(pady=20)
 
-    # Botón para iniciar la comunicación
-    start_button = tk.Button(root, text="Iniciar Comunicación", command=lambda: iniciar_hilos(output))
+    start_button = tk.Button(root, text="Iniciar Comunicación", command=lambda: iniciar_hilos(output), bg='#4CAF50', fg='#ffffff')
     start_button.pack(pady=10)
 
     root.mainloop()
