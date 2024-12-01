@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import font, Toplevel
-from tkinter import messagebox
 from PIL import Image, ImageTk
 import fitz
 import os
@@ -10,52 +9,21 @@ from Sockets import mensajes_cliente_servidor, tcp_cliente_servidor, udp_cliente
 from Semaforos import condicion_de_carrera, sala_de_chat_ip_cliente, sala_de_chat_ip_servidor, sincronizacion_de_semaforos, semaforos_cliente_servidor, barbero_dormilon, barbero_dormilon_cliente_servidor, sala_de_chat_local
 from Patrones import productor_consumidor, actores, reactor_y_proactor, futuro_promesa_cliente, futuro_promesa_servidor
 
-PDF_PATH = r"Documentacion/pdfproyectofinal.pdf"
-
 ventanas_abiertas = []
-
-def mostrar_documentacion():
-    ventana_pdf = Toplevel(root)
-    ventanas_abiertas.append(ventana_pdf)
-    ventana_pdf.title("Documentación") 
-    ventana_pdf.geometry("650x600")
-    ventana_pdf.configure(bg="#2c3e50")
-
-    frame = tk.Frame(ventana_pdf, bg="#2c3e50")
-    frame.pack(fill="both", expand=True)
-
-    canvas = tk.Canvas(frame, bg="white")
-    scroll_y = tk.Scrollbar(frame, orient="vertical", command=canvas.yview)
-    canvas.configure(yscrollcommand=scroll_y.set)
-
-    scroll_y.pack(side="right", fill="y")
-    canvas.pack(side="left", fill="both", expand=True)
-
-    inner_frame = tk.Frame(canvas, bg="white")
-    canvas.create_window((0, 0), window=inner_frame, anchor="nw")
-
-    def load_pdf():
-        try:
-            doc = fitz.open(PDF_PATH)
-            for page_number in range(len(doc)):
-                page = doc.load_page(page_number)
-                pix = page.get_pixmap()
-                image = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
-                photo = ImageTk.PhotoImage(image)
-
-                label = tk.Label(inner_frame, image=photo, bg="white")
-                label.image = photo
-                label.pack()
-
-            inner_frame.update_idletasks()
-            canvas.configure(scrollregion=canvas.bbox("all"))
-        except Exception as e:
-            tk.Label(inner_frame, text=f"Error al cargar el PDF:\n{e}", fg="red", bg="white").pack()
-
-    load_pdf()
 
 PDF_PATHS = {
     "Documentación Del Proyecto Final": r"Documentacion/pdfproyectofinal.pdf",
+    "Apunte De Introduccion A La Programacion Concurrente": r"Documentacion\Apunte_de_Introducción_de_Concurrencia.pdf",
+    "Apunte De Hilos": r"Documentacion\Apunte_de_Hilos.pdf",
+    "Apunte de Expectativas De La Materia": r"Documentacion\Apunte_expectativas_de_la_materia.pdf",
+    "Apunte De Sockets TCP y UDP": r"Documentacion\ApunteSockets_TCP_y_UDP.pdf",
+    "Apunte De Semáforos": r"Documentacion\Apunte_Semáforos.pdf",
+    "Apunte De Tkinter": r"Documentacion\Apunte_Tkinter.pdf",
+    "Apunte De Sala De Chat Simple": r"Documentacion\Apunte_Sala_De_Chat_Simple.pdf",
+    "Apunte De Patron Future Y Promesa": r"Documentacion\Apunte_Introducción_a_los_patrones_y_el_Patrón_de_Futuro_y_Promesa.pdf",
+    "Apunte De Patron Productor/Consumidor": r"Documentacion\Apunte_Patrón_de_Productor_Consumidor.pdf",
+    "Apunte De Patron De Actores": r"Documentacion\Apunte_Patrón_de_El_Modelo_de_Actores .pdf",
+    "Apunte de Patron Reactor Y Proactor": r"Documentacion\Apunte_Patrón_de_Reactor_y_Proactor.pdf"
 }
 
 def mostrar_pdf(pdf_path):
