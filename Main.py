@@ -77,8 +77,6 @@ opciones_funciones = {
     "UDP Cliente/Servidor": udp_cliente_servidor.ejecutar if hasattr(udp_cliente_servidor, 'ejecutar') else lambda: print("Función no encontrada"),
     "Sincronización de semáforos": sincronizacion_de_semaforos.ejecutar if hasattr(sincronizacion_de_semaforos, 'ejecutar') else lambda: print("Función no encontrada"),
     "Barbero dormilón": barbero_dormilon.ejecutar if hasattr(barbero_dormilon, 'ejecutar') else lambda: print("Función no encontrada"),
-    "Sala de chat IP Cliente": sala_de_chat_ip_cliente.ejecutar if hasattr(sala_de_chat_ip_cliente, 'ejecutar') else lambda: print("Función no encontrada"),
-    "Sala de chat IP Servidor": sala_de_chat_ip_servidor.ejecutar if hasattr(sala_de_chat_ip_servidor, 'ejecutar') else lambda: print("Función no encontrada"),
     "Productor-Consumidor": productor_consumidor.ejecutar if hasattr(productor_consumidor, 'ejecutar') else lambda: print("Función no encontrada"),
     "Reactor y Proactor": reactor_y_proactor.ejecutar if hasattr(reactor_y_proactor, 'ejecutar') else lambda: print("Función no encontrada"),
     "Comunicacion Directa": comunicacion_directa.ejecutar if hasattr(comunicacion_directa, 'ejecutar') else lambda: print("Función no encontrada"),
@@ -91,6 +89,8 @@ opciones_funciones = {
     "Futuro Promesa Cliente": futuro_promesa_cliente.ejecutar if hasattr(futuro_promesa_cliente, 'ejecutar') else lambda: print("Función no encontrada"),
     "Futuro Promesa Servidor": futuro_promesa_servidor.ejecutar if hasattr(futuro_promesa_servidor, 'ejecutar') else lambda: print("Función no encontrada"),
     "Barbero dormilón Cliente/Servidor": barbero_dormilon_cliente_servidor.ejecutar if hasattr(barbero_dormilon_cliente_servidor, 'ejecutar') else lambda: print("Función no encontrada"),
+    "Sala de chat IP cliente": sala_de_chat_ip_cliente.ejecutar if hasattr(sala_de_chat_ip_cliente, 'ejecutar') else lambda: print("Función no encontrada"),
+    "Sala de chat IP servidor": sala_de_chat_ip_servidor.ejecutar if hasattr(sala_de_chat_ip_servidor, 'ejecutar') else lambda: print("Función no encontrada")
 }
 
 def mostrar_submenu(titulo, opciones):
@@ -165,7 +165,7 @@ menu_bar.lift()
 
 hilos_opciones = ["Hilos-Hilos", "Hilos con argumentos", "Hilos con función tarea", "Hilos sincronizados", "Mario Bros Ruleta"]
 sockets_opciones = ["Mensajes Cliente/Servidor", "TCP Cliente/Servidor", "UDP Cliente/Servidor", "Comunicacion Directa", "Comunicacion Indirecta", "Autenticacion Aguila"]
-semaforos_opciones = ["Sincronización de semáforos", "Barbero dormilón", "Barbero dormilón Cliente/Servidor", "Condicion de Carrera", "Semaforos Cliente/Servidor", "Sala de Chat Local", "Sala de chat IP Cliente", "Sala de chat IP Servidor"]
+semaforos_opciones = ["Sincronización de semáforos", "Barbero dormilón", "Barbero dormilón Cliente/Servidor", "Condicion de Carrera", "Semaforos Cliente/Servidor", "Sala de Chat Local", "Sala de chat IP cliente", "Sala de chat IP servidor"]
 patrones_opciones = ["Productor-Consumidor", "Actores", "Reactor y Proactor", "Futuro Promesa Cliente", "Futuro Promesa Servidor"]
 documentacion_opciones = ["Apunte De Introduccion A La Programacion Concurrente", "Apunte De Hilos", "Apunte De Sockets TCP y UDP", "Apunte De Semáforos", "Apunte De Tkinter", "Apunte De Sala De Chat Simple", "Apunte De Patron Future Y Promesa", "Apunte De Patron Productor/Consumidor", "Apunte De Patron De Actores", "Apunte de Patron Reactor Y Proactor", "Apunte de Expectativas De La Materia", "Documentación Del Proyecto Final"]
 
