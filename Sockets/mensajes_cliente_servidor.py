@@ -81,12 +81,13 @@ def ejecutar():
         btn_iniciar.pack(pady=10)
         return ventana, output
 
+    # Crear ventanas para servidor y cliente
     ventana_servidor, output_servidor = crear_ventana("Servidor", lambda output: iniciar_hilos(output, output_cliente))
     ventana_cliente, output_cliente = crear_ventana("Cliente", lambda output: iniciar_hilos(output_servidor, output))
 
     # Ejecutar las ventanas en el hilo principal
-    ventana_servidor.after(100, lambda: threading.Thread(target=ventana_cliente.mainloop).start())
     ventana_servidor.mainloop()
+    ventana_cliente.mainloop()
 
 if __name__ == "__main__":
     ejecutar()
