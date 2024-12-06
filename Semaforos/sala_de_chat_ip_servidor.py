@@ -2,6 +2,7 @@ import socket
 import threading
 import tkinter as tk
 from tkinter import scrolledtext, messagebox
+from tkinter import simpledialog
 
 def ejecutar():
     class ChatServer:
@@ -16,7 +17,10 @@ def ejecutar():
             self.start_button = tk.Button(self.root, text="Iniciar Servidor", command=self.start_server)
             self.start_button.pack(pady=10)
 
-            self.HOST = '192.168.53.75'  # Cambiar a la dirección IP del servidor si es necesario
+            self.HOST = simpledialog.askstring("IP del Servidor", "RECUERDA DESACTIVAR LOS FIREWALLS\nIntroduce la IP del servidor:", parent=self.root)
+            if not self.HOST:
+                self.root.destroy()
+                return
             self.PORT = 12345  # Cambiar al puerto deseado
             self.server = None
             self.clients = []
