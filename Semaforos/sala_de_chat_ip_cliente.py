@@ -9,7 +9,10 @@ def ejecutar():
             self.root.title("Cliente de Chat")
             
             # Configuración del socket
-            self.HOST = '192.168.53.75'  # Cambia esto a la IP del servidor
+            self.HOST = simpledialog.askstring("IP del Servidor", " RECUERDA DESACTIVAR LOS FIREWALS\nIntroduce la IP del servidor:", parent=self.root)
+            if not self.HOST:
+                self.root.destroy()
+                return
             self.PORT = 12345  # Cambia esto al puerto del servidor
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
